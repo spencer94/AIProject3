@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+
+\author{Spencer Teolis}
+\title{Image Classification}
+\date{}
+\begin{document}
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\section{introduction}
+The purpose of this project was to classify a given image into one of five catagories. The training set data consisited of five types of images:
+Dollar Sign
+Heart
+Hashtag
+Hat
+Smiley Face
+
+The method used for classification was k-nearest neighbors. 
+
+\section{Processing Images}
+Each image in the training set, as well as the test image, was resized to 100 x 100 pixels and then turned into a two dimensional bitmap. Each image was further processed reducing the dimensions of each image from 10000 to 50 using randomized principle component analysis.  
+
+\section{K-Nearest Neighbors}
+K-Nearest Neighbors is a simple algorithm that stored all available labeled data and classified new cases based on a similarity measure. A case was classified by a majority vote of its neighbors, with the case being assigned to the class most common amongst its K nearest neighbors measured by a distance function.
+
+\section{Testing and Accuracy}
+In order to throughly test the classification algorithim the classifier was trained 412 times (the total number of images) leaving a different image out of the training set each time to test. To determine the optimal dimensions to use K-nearest neighbors this process was repeated eleven times reducing each image to 2,3,4,5,10,20,30,50,100,200, and 1000 dimensions. The table below shows the number of images it classified correct out of the set, and the run time to train the set and classify one image (one iteration out of 412).
+
+\begin{table}[]
+\centering
+\caption{\textbf{Dimension Performance}}
+\hfill
+\\ 
+\break
+\label{my-label}
+\begin{tabular}{ccc}
+\multicolumn{1}{l}{Dimensions} & \begin{tabular}[c]{@{}c@{}}Correct Classifications\\ out of 411\end{tabular} & \begin{tabular}[c]{@{}c@{}}Average Runtime in seconds\\ (per iteration)\end{tabular} \\ \\
+2                              & 282                                                                          & 0.37293                                                                              \\
+3                              & 319                                                                          & 0.37359                                                                              \\
+4                              & 355                                                                          & 0.38685                                                                              \\
+5                              & 374                                                                          & 0.38541                                                                              \\
+10                             & 402                                                                          & 0.38592                                                                              \\
+20                             & 401                                                                          & 0.39226                                                                              \\
+30                             & 406                                                                          & 0.40788                                                                              \\
+50                             & 410                                                                          & 0.45280                                                                              \\
+100                            & 406                                                                          & 0.60094                                                                              \\
+200                            & 408                                                                          & 0.84095                                                                              \\
+1000                           & 408                                                                          & 3.22550                                                                             
+\end{tabular}
+\end{table}
+
+\end{document}
