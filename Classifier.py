@@ -59,7 +59,7 @@ def main():
 	ImageToClassify = img.reshape(1,-1)
 	
 	print ("reducing arrays using randomizedPCA...")
-	pca = RandomizedPCA(n_components=4)
+	pca = RandomizedPCA(n_components=50)
 	images = pca.fit_transform(images)
 	ImageToClassify = pca.transform(ImageToClassify)
 
